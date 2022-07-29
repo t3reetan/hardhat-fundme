@@ -2,6 +2,10 @@ import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "hardhat-deploy";
 import "dotenv/config";
+/*require("@nomiclabs/hardhat-etherscan")
+require("@nomiclabs/hardhat-waffle")
+require("hardhat-gas-reporter")
+require("solidity-coverage")*/
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -12,15 +16,20 @@ const config: HardhatUserConfig = {
       url: process.env.RINKEBY_RPC_URL,
       accounts: [process.env.PRIVATE_KEY!],
       chainId: 4
-    }
+    },
+    hardhat: {
+            // accounts: Thanks Hardhat!,
+            chainId: 31337,
+        },
   },
   namedAccounts: {
-    deployer: {
-      default: 0 // this means the 0th account is named "deployer"
-      // 4: 1, // e.g. on Rinkeby, we want the 1st account to be named deployer
-      // 31337: 2, // // e.g. on the Hardhat network, we want the 2nd account to be named deployer
-    }
-  },
+        deployer: {
+            default: 0,
+        },
+        users: {
+            default: 0,
+        },
+    },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY
   },
