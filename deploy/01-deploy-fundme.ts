@@ -22,10 +22,10 @@ module.exports = async ({
   }
 
   // deploy contract
-  const arguments = [ethPriceFeedAddress];
+  const args = [ethPriceFeedAddress];
   const fundMeContract = await deploy("FundMe", {
     from: deployer,
-    args: arguments,
+    args,
     log: true, // log out something like deploying "MockV3Aggregator" (tx: 0x627db34b2edc927a5ed9fde5a0a1e76d6062adc9760478f2e749e1588623d996)...: deployed at 0x5FbDB2315678afecb367f032d93F642f64180aa3 with 569635 gas
     // @ts-ignore
     waitConfirmations: networkConfig[network.name].blockConfirmations || 0
