@@ -36,7 +36,7 @@ chainId === 31337
         const tx = await fundMeContract.withdraw();
         await tx.wait(1);
 
-        const endingBalance = await ethers.provider.getBalance(
+        const endingBalance = await fundMeContract.provider.getBalance(
           fundMeContract.address
         );
 
